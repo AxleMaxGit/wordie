@@ -1,0 +1,13 @@
+<h1>Show</h1>
+
+<%= render 'links' %>
+
+<p><b>Search term was: <%= @word.search_term %></b></p>
+
+	<% @results.each do |result| %>
+		
+	  <p><%= "Result #{@counter} for \"#{@word.search_term}\"" %></p> 
+	  <p><%= link_to result.uri, result.uri %></p>   
+	  <% @counter += 1 %>
+	<% end %>
+

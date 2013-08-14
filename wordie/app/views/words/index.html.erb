@@ -1,0 +1,7 @@
+<h1>Words Index Page</h1>
+
+	<% @words.each do |word| %>
+	      <p><%= link_to word.search_term, word_path(word)  %></p>    
+	<% end %>
+
+<%= render 'links' %>

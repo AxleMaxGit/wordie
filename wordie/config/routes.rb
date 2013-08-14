@@ -1,4 +1,21 @@
 Wordie::Application.routes.draw do
+
+  root 'wordie#index' 
+
+  resources :words
+
+# Prefix      Verb   URI Pattern               Controller#Action
+#      root   GET    /                         wordie#index
+#     words   GET    /words(.:format)          words#index
+#             POST   /words(.:format)          words#create
+#  new_word   GET    /words/new(.:format)      words#new
+# edit_word   GET    /words/:id/edit(.:format) words#edit
+#      word   GET    /words/:id(.:format)      words#show
+#             PATCH  /words/:id(.:format)      words#update
+#             PUT    /words/:id(.:format)      words#update
+#             DELETE /words/:id(.:format)      words#destroy
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,11 @@
+<h1>Add a New Search</h1>
+
+<%= form_for @word do |f| %>
+  <%= f.label "Enter seartch term" %>
+  <%= f.text_area :search_term %>
+   
+  <%= f.submit %>
+<% end %>
+
+
+<%= render 'links' %>
