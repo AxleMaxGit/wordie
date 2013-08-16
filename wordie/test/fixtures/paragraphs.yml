@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  para_text: MyText
+  uri_id: 1
+
+two:
+  para_text: MyText
+  uri_id: 1
