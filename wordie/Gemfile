@@ -32,7 +32,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#used to retrieve URIs from the Google Custom Search API
 gem 'google-search'
+
+#Nokogiri is used to parse HTML
+gem 'nokogiri'
+#gem 'open-uri'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

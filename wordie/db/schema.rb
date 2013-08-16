@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812103348) do
+ActiveRecord::Schema.define(version: 20130814061745) do
+
+  create_table "paragraphs", force: true do |t|
+    t.text     "para_text"
+    t.integer  "uri_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "uris", force: true do |t|
     t.string   "uri"
