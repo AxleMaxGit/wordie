@@ -1,5 +1,8 @@
 class WordsController < ApplicationController
 
+    #commented out for dev. Reinstate for release.
+    #before_filter :authenticate_user!, :only => [:new] 
+
 	def index
 		@words = Word.all
 	end
@@ -17,7 +20,10 @@ class WordsController < ApplicationController
   def show
     @counter = 1
     @word = Word.find(params[:id])
-    @results = Uri.where("word_id = ?", params[:id])
+    #@results = Uri.where("word_id = ?", params[:id])
+    @results = @word.uris
+
+    #code here that for_each results.id {load the paras}
     @p_results = Paragraph.all
 
     #you aren't passing he uri ID !!

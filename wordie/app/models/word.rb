@@ -22,6 +22,7 @@ class Word < ActiveRecord::Base
           #save all of the relevant paras to the DB
           @para = Paragraph.new(:para_text => "#{@holder}", :uri_id => "#{@uri.id}")
           @para.save
+          #Debugging text in the console
           puts @para.id
           puts " #################################"
         end

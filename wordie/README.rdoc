@@ -1,3 +1,10 @@
+== NOTES
+
+* Add code to ignore URIs that have no relevant <p> text
+* Add code to allow the user to select what CSS tags they want to check
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

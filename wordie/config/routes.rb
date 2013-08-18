@@ -1,5 +1,6 @@
 Wordie::Application.routes.draw do
 
+  devise_for :users
   root 'wordie#index' 
 
   resources :words
