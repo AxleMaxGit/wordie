@@ -4,26 +4,22 @@
 
 <p><b>Search term was: <%= @word.search_term %></b></p>
 
-	<% @results.each do |result| %>
+	<% @results.each do |uri| %>
 		
 	  <p><%= "Result #{@counter} for \"#{@word.search_term}\"" %></p> 
-	  <p><%= link_to result.uri, result.uri %></p>   
+	  <p><%= link_to uri.uri, uri.uri %></p>   
 
-			
 	  	<%# need to show para text where uri_id = current uri %>
-	  	<% @p_results.each do |p| %>
-	  		<% if p.uri_id == result.id%>
-	  			<p><%= p.para_text %></p>
+	  		<% uri.paragraphs.first(4).each do |para| %>
+		  			<p><%= para.id %></p>
+		  			<p><%= para.para_text %></p>
 	  		<% end %>
-	  	<% end %>
 
 			<%# debugging text %>
-			<p><%= result.to_json %></p>
+			<p><%= uri.to_json %></p>
 
 	  <p>###show number of relevant paras here###Links to link_para_page???</p>
 	  <p>###show word count table ?? here###n-words</p>
 	  <p>###show number of relevant paras here###</p>
 	  <br />
-	  <% @counter += 1 %>
 	<% end %>
-
