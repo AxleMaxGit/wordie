@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818030607) do
+ActiveRecord::Schema.define(version: 20130819094315) do
 
   create_table "paragraphs", force: true do |t|
     t.text     "para_text"
     t.integer  "uri_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stopwords", force: true do |t|
+    t.string   "stop_word"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +50,16 @@ ActiveRecord::Schema.define(version: 20130818030607) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wordcounts", force: true do |t|
+    t.string   "keyword"
+    t.string   "keyword_stem"
+    t.string   "pos_type"
+    t.integer  "count"
+    t.integer  "paragraph_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "words", force: true do |t|
     t.string   "search_term"

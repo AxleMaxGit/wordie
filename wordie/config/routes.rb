@@ -5,6 +5,9 @@ Wordie::Application.routes.draw do
 
   resources :words
 
+  resources :stopwords
+
+
 # Prefix      Verb   URI Pattern               Controller#Action
 #      root   GET    /                         wordie#index
 #     words   GET    /words(.:format)          words#index
@@ -15,6 +18,7 @@ Wordie::Application.routes.draw do
 #             PATCH  /words/:id(.:format)      words#update
 #             PUT    /words/:id(.:format)      words#update
 #             DELETE /words/:id(.:format)      words#destroy
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

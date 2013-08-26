@@ -1,25 +1,75 @@
 <h1>Show</h1>
+<% @result_count = 1 %>
+<%= render 'links' %><br /><br />
 
-<%= render 'links' %>
-
-<p><b>Search term was: <%= @word.search_term %></b></p>
+<h4><b>Search term was: "<%= @word.search_term %>"</b></h4>
 
 	<% @results.each do |uri| %>
-		
-	  <p><%= "Result #{@counter} for \"#{@word.search_term}\"" %></p> 
-	  <p><%= link_to uri.uri, uri.uri %></p>   
 
-	  	<%# need to show para text where uri_id = current uri %>
-	  		<% uri.paragraphs.first(4).each do |para| %>
-		  			<p><%= para.id %></p>
-		  			<p><%= para.para_text %></p>
-	  		<% end %>
+    <!-- Only show paras with relevant text -->
+    <% if uri.paragraphs.length > 0 %>
 
-			<%# debugging text %>
-			<p><%= uri.to_json %></p>
+      <h3>The # <%= "#{ @result_count}" %> result for "<%= @word.search_term %>" is <%= link_to uri.uri, uri.uri %></h3>
+      <% @result_count += 1 %>
+      
 
-	  <p>###show number of relevant paras here###Links to link_para_page???</p>
-	  <p>###show word count table ?? here###n-words</p>
-	  <p>###show number of relevant paras here###</p>
-	  <br />
+  	  <% @l = uri.wordcounts.group_by { |wc| wc.keyword }.inject({}) { |h, (k,wordcounts)| h[k] = wordcounts.sum { |wc| wc.count }; h }.sort_by{|k, v| v}.reverse %>
+      <h6>This table shows the top words for <%= uri.uri %>.</h6>
+      
+      <table border = "2", width="75%">
+              <tr>
+                <th>Keyword</th>
+                <th>Count</th>
+                <th></th>
+              </tr>
+
+      <% @l.each do |item| %>
+        <tr>
+        <td><%= item[0] %></td>
+        <td><%= item[1] %></td>
+        <td><%= link_to "<<Stop word<<< ", stopwords_path(:stopword => {:stop_word => item[0]}), :method => "post" %></td>
+        </tr>
+      <% end %>
+
+    </table>
+      <br />
+
+  	  <h3><%= "There are #{uri.paragraphs.length} relevant paragraphs for this URL." %></h3>
+  	  	<%# show the first 4 results. Later replace this with the top 4 results by relevance %>
+  		<br />
+     
+        <% @para_count = 1 %>
+      	<% uri.paragraphs.first(4).each do |para| %>
+            <h4>Paragraph <%= "#{ @para_count}" %> for <%= link_to uri.uri, uri.uri %> is ...</h4>
+            <% @para_count += 1 %>
+          <p>"<%= para.para_text %>"</p>
+
+          <% if para.wordcounts.first %><br />
+
+    				<p>The top words for this paragraph are: </p>
+
+            <table border = "2", width="75%">
+              <tr>
+                <th>Keyword</th>
+                <th>Count</th>
+                <th></th>
+              </tr>
+
+      				<% para.wordcounts.each do |tpwd| %>
+              <tr>
+      					<td><%= tpwd.keyword %></td>
+                <td><%= tpwd.count %></td>
+                <td><%= link_to "<<< Make stop word ", stopwords_path(:stopword => {:stop_word => tpwd.keyword}), :method => "post" %></td>
+              </tr>
+      				<% end %>
+
+            </table>
+               <br />
+          <% else %>  
+            <p>**There are no repeated keywords in this paragraph**</p>
+          <% end %>
+  	<% end %>
+
+  	  	<br /><br />
+      <% end %>
 	<% end %>

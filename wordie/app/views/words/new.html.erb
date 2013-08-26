@@ -1,11 +1,18 @@
 <h1>Add a New Search</h1>
 
-<%= form_for @word do |f| %>
-  <%= f.label "Enter seartch term" %>
-  <%= f.text_area :search_term %>
-   
-  <%= f.submit %>
-<% end %>
+<%= render 'links' %><br /><br />
 
+	<%= form_for @word do |f| %>
+		<div class="form-group">
+		  <%= f.label "Enter a seartch term" %>
+		</div>
 
-<%= render 'links' %>
+		<div class="form-group">
+		 		<%= f.text_field :search_term, :placeholder => "Enter your search terms here" %>
+	  </div>
+
+	  <div class="form-group">
+	  <%= f.submit :class => "btn btn-primary" %>
+	  </div>
+	<% end %><!--  #end form -->
+

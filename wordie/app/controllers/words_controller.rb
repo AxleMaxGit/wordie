@@ -12,6 +12,7 @@ class WordsController < ApplicationController
   end #end new
 
   def create
+    
     @word = Word.new(params.require(:word).permit(:search_term))
     @word.save_and_process
     redirect_to word_path(@word)
@@ -22,7 +23,5 @@ class WordsController < ApplicationController
     @word = Word.find(params[:id])
     #@results = Uri.where("word_id = ?", params[:id])
     @results = @word.uris
-
   end #end show
-
 end

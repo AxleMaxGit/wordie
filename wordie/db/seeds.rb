@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Stopword.create [
+  {
+    stop_word: "and",
+  },
+  {
+    stop_word: "the",
+  },
+  {
+    stop_word: "is",
+  },
+  {
+    stop_word: "a",
+  },
+  {
+    stop_word: "if",
+  },]

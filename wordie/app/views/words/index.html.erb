@@ -1,7 +1,26 @@
 <h1>Words Index Page</h1>
 
-	<% @words.each do |word| %>
-	      <p><%= link_to word.search_term, word_path(word)  %></p>    
-	<% end %>
-
 <%= render 'links' %>
+
+<h3>Recent Searches</h3>
+
+<p>Click a search term to see the results</P>
+
+	<table border = "2", width="80%">
+    <tr>
+      <th>Keyword</th><th>Keyword</th>
+    </tr>
+    <tr>
+		<% @words.each do |word| %>
+			<% if word.id % 2 == 0 %> 
+				<td>
+						<%= link_to word.search_term, word_path(word)  %>  
+				</td></tr><tr>
+			<% else %>
+					<td>
+						<%= link_to word.search_term, word_path(word)  %>  
+					</td>
+			<% end %>
+		<% end %>
+		</tr>
+	</table>

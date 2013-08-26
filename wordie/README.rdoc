@@ -1,7 +1,41 @@
 == NOTES
 
-* Add code to ignore URIs that have no relevant <p> text
+* Deploy to Heroku
+* format the 'Add word' page
+* do table of keywords for search term (i.e. a rollup of URI table)
+* Display results with 'most relevant' URI shown first
+* Add code to find 'most relevant' page by word count (Points for the top 10 most relevant words?)
+
+
+* Add radio button to make search date limited
+* if stop word already exists then don't process it
+
+* Add code to catch Web connetctiion not working
+* add code to break multi word searches up and do like word queries
+
+
 * Add code to allow the user to select what CSS tags they want to check
+* watch http://railscasts.com/episodes/250-authentication-from-scratch
+
+* Conduct daily search
+* Build word count ofver time and build a most relevant URL of all time list
+* Check URI not checked before
+
+TREAT
+* get variables in do_word_count method to use the 'treat' gem methods
+* use a rake task to install the language pack
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
