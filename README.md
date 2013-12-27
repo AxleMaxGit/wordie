@@ -1,4 +1,4 @@
 wordie
 ======
 
-repo for BEWD final project
+The beginnings of a natural language processing tool written in Ruby on Rails.
